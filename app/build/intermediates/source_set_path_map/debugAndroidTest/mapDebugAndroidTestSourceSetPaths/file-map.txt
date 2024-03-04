@@ -1,0 +1,35 @@
+com.clean.mvvmLbg.test.app-core-1.5.0-0 C:\Users\PR20406131\.gradle\caches\transforms-3\04c1d9397569b62ffdde5d0387049589\transformed\core-1.5.0\res
+com.clean.mvvmLbg.test.app-lifecycle-livedata-core-2.7.0-1 C:\Users\PR20406131\.gradle\caches\transforms-3\087e6849f740fd034eece779b5c5c3f3\transformed\lifecycle-livedata-core-2.7.0\res
+com.clean.mvvmLbg.test.app-activity-ktx-1.8.2-2 C:\Users\PR20406131\.gradle\caches\transforms-3\12d8a8b21a914fdee6fac210fe194e1c\transformed\activity-ktx-1.8.2\res
+com.clean.mvvmLbg.test.app-core-1.12.0-3 C:\Users\PR20406131\.gradle\caches\transforms-3\1f4df6819762c9554ec3ac7d41c716cf\transformed\core-1.12.0\res
+com.clean.mvvmLbg.test.app-savedstate-1.2.1-4 C:\Users\PR20406131\.gradle\caches\transforms-3\26751f0101bb62aeda0f67917fa474c4\transformed\savedstate-1.2.1\res
+com.clean.mvvmLbg.test.app-startup-runtime-1.1.1-5 C:\Users\PR20406131\.gradle\caches\transforms-3\2f2a8bbfdac315acd6f6e95f46b81829\transformed\startup-runtime-1.1.1\res
+com.clean.mvvmLbg.test.app-ui-graphics-release-6 C:\Users\PR20406131\.gradle\caches\transforms-3\437a95da1cc889464304925208b73f31\transformed\ui-graphics-release\res
+com.clean.mvvmLbg.test.app-customview-poolingcontainer-1.0.0-7 C:\Users\PR20406131\.gradle\caches\transforms-3\54efe295556e14403f92ed3f5cd0d413\transformed\customview-poolingcontainer-1.0.0\res
+com.clean.mvvmLbg.test.app-lifecycle-viewmodel-ktx-2.7.0-8 C:\Users\PR20406131\.gradle\caches\transforms-3\5542aba5c08d4571ea0fc51f39f9d34d\transformed\lifecycle-viewmodel-ktx-2.7.0\res
+com.clean.mvvmLbg.test.app-lifecycle-runtime-ktx-2.7.0-9 C:\Users\PR20406131\.gradle\caches\transforms-3\57ed29b15dd582e1c01d453429c13ed0\transformed\lifecycle-runtime-ktx-2.7.0\res
+com.clean.mvvmLbg.test.app-lifecycle-runtime-2.7.0-10 C:\Users\PR20406131\.gradle\caches\transforms-3\6158b211a73cf21946241789dfb443db\transformed\lifecycle-runtime-2.7.0\res
+com.clean.mvvmLbg.test.app-annotation-experimental-1.4.0-11 C:\Users\PR20406131\.gradle\caches\transforms-3\6a520c74e410623ee36f14dec9be0368\transformed\annotation-experimental-1.4.0\res
+com.clean.mvvmLbg.test.app-lifecycle-process-2.7.0-12 C:\Users\PR20406131\.gradle\caches\transforms-3\6c8a3d6c84b911a8e49a0d66959cf77d\transformed\lifecycle-process-2.7.0\res
+com.clean.mvvmLbg.test.app-core-runtime-2.2.0-13 C:\Users\PR20406131\.gradle\caches\transforms-3\83cbc459a095d3b7bc063a0c09d6d0b9\transformed\core-runtime-2.2.0\res
+com.clean.mvvmLbg.test.app-runtime-saveable-release-14 C:\Users\PR20406131\.gradle\caches\transforms-3\84c904404ce95b9519b3f2a8342f6117\transformed\runtime-saveable-release\res
+com.clean.mvvmLbg.test.app-activity-1.8.2-15 C:\Users\PR20406131\.gradle\caches\transforms-3\892b17eb5a9c55e1d278dd6495629819\transformed\activity-1.8.2\res
+com.clean.mvvmLbg.test.app-ui-unit-release-16 C:\Users\PR20406131\.gradle\caches\transforms-3\91344fb1d82d51ea0930b4680f13ceb2\transformed\ui-unit-release\res
+com.clean.mvvmLbg.test.app-lifecycle-viewmodel-2.7.0-17 C:\Users\PR20406131\.gradle\caches\transforms-3\9275b19de1adba75e78c5cac64455dc9\transformed\lifecycle-viewmodel-2.7.0\res
+com.clean.mvvmLbg.test.app-ui-text-release-18 C:\Users\PR20406131\.gradle\caches\transforms-3\979f9bcf68a80374541847a81e9e0e38\transformed\ui-text-release\res
+com.clean.mvvmLbg.test.app-profileinstaller-1.3.0-19 C:\Users\PR20406131\.gradle\caches\transforms-3\a4799400d714e813d1e393e2854302a3\transformed\profileinstaller-1.3.0\res
+com.clean.mvvmLbg.test.app-activity-compose-1.8.2-20 C:\Users\PR20406131\.gradle\caches\transforms-3\a9543a13d4ff88ba00dab2a38838ce79\transformed\activity-compose-1.8.2\res
+com.clean.mvvmLbg.test.app-core-ktx-1.12.0-21 C:\Users\PR20406131\.gradle\caches\transforms-3\c20bfa4cb9193efbabd5801f761be1ca\transformed\core-ktx-1.12.0\res
+com.clean.mvvmLbg.test.app-runtime-release-22 C:\Users\PR20406131\.gradle\caches\transforms-3\d40e0f3aa674485e17c345f9bc551ab6\transformed\runtime-release\res
+com.clean.mvvmLbg.test.app-savedstate-ktx-1.2.1-23 C:\Users\PR20406131\.gradle\caches\transforms-3\d7562b54fc1eca9d720309617672f864\transformed\savedstate-ktx-1.2.1\res
+com.clean.mvvmLbg.test.app-lifecycle-viewmodel-savedstate-2.7.0-24 C:\Users\PR20406131\.gradle\caches\transforms-3\d8c9731111e3f05f331277cffa828058\transformed\lifecycle-viewmodel-savedstate-2.7.0\res
+com.clean.mvvmLbg.test.app-emoji2-1.3.0-25 C:\Users\PR20406131\.gradle\caches\transforms-3\db6e8dd9001cc57e07e574f1146aea5a\transformed\emoji2-1.3.0\res
+com.clean.mvvmLbg.test.app-ui-geometry-release-26 C:\Users\PR20406131\.gradle\caches\transforms-3\db90bf4b5caaca6dea43caa64e51d96a\transformed\ui-geometry-release\res
+com.clean.mvvmLbg.test.app-ui-test-junit4-release-27 C:\Users\PR20406131\.gradle\caches\transforms-3\e30fe9272dbb915c6cab713fcd6164c4\transformed\ui-test-junit4-release\res
+com.clean.mvvmLbg.test.app-ui-test-release-28 C:\Users\PR20406131\.gradle\caches\transforms-3\e35305f91ea5586a3fe69063d5d45019\transformed\ui-test-release\res
+com.clean.mvvmLbg.test.app-ui-release-29 C:\Users\PR20406131\.gradle\caches\transforms-3\fab31987401df37eb6cfbd9f89f68c97\transformed\ui-release\res
+com.clean.mvvmLbg.test.app-ui-util-release-30 C:\Users\PR20406131\.gradle\caches\transforms-3\fed072e36f8ead341c2ff7c89d3b53b6\transformed\ui-util-release\res
+com.clean.mvvmLbg.test.app-androidTest-31 C:\Users\PR20406131\Music\rain 3.0.1\LBG MVVM-Clean_Architect-Example-with-koin Jetpack compose single activity\app\build\generated\res\resValues\androidTest\debug
+com.clean.mvvmLbg.test.app-mergeDebugAndroidTestResources-32 C:\Users\PR20406131\Music\rain 3.0.1\LBG MVVM-Clean_Architect-Example-with-koin Jetpack compose single activity\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.clean.mvvmLbg.test.app-mergeDebugAndroidTestResources-33 C:\Users\PR20406131\Music\rain 3.0.1\LBG MVVM-Clean_Architect-Example-with-koin Jetpack compose single activity\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.clean.mvvmLbg.test.app-debugAndroidTest-34 C:\Users\PR20406131\Music\rain 3.0.1\LBG MVVM-Clean_Architect-Example-with-koin Jetpack compose single activity\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
