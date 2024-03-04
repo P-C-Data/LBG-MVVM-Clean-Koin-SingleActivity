@@ -1,16 +1,19 @@
 <br />
   <a href="https://github.com/othneildrew/Best-README-Template">
-  <h2 align="start">Kotlin MVVM-Clean Architect-JetPack Compose-Example-with- DI-Koin, Coroutines, Retrofit, Room, Solid Principles, DRY Principle, OOPs</h2>
+  
+  ![android](https://img.shields.io/badge/android-grey.svg?logo=android)<h2 align="start">Kotlin Single Activity MVVM-Clean Architect-JetPack Compose-Example-with- DI-Koin, Coroutines, Retrofit, Room, Solid Principles, DRY Principle, OOPs</h2>
+
 
 [![License](https://badgen.net/badge/License/Apache/blue/)](https://opensource.org/licenses/Apache-2.0)
-![MinAPI](https://badgen.net/badge/MinAPI/24/silver/)
-[![Compose](https://img.shields.io/badge/compose-1.5.4-green.svg?)](https://developer.android.com/jetpack/compose)
-[![Koin](https://img.shields.io/badge/Koin-3.4.3-blue.svg?logo=koin)](https://insert-koin.io/)
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.10-yellow.svg?logo=kotlin)](http://kotlinlang.org)
-[![Room DB](https://img.shields.io/badge/Room-2.6.0-sky.svg?logo=room)](https://developer.android.com/training/data-storage/room)
-[![Mokito](https://img.shields.io/badge/mokito-2.2.0-red.svg?)](https://lv.binarybabel.org/catalog/gradle/latest)
+![MinAPI](https://badgen.net/badge/MinAPI/24/silver)
+[![Compose](https://img.shields.io/badge/compose-1.6.2-green.svg?logo=android)](https://developer.android.com/jetpack/compose)
+[![Koin](https://img.shields.io/badge/Koin-3.4.3-blue.svg?logo=kotlin)](https://insert-koin.io/)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.22-yellow.svg?logo=kotlin)](http://kotlinlang.org)
+[![Room DB](https://img.shields.io/badge/Room-2.6.1-sky.svg?logo=android)](https://developer.android.com/training/data-storage/room)
+[![Mokito](https://img.shields.io/badge/mokito-2.2.0-red.svg?logo=test)](https://lv.binarybabel.org/catalog/gradle/latest)
 [![Junit](https://img.shields.io/badge/junit-4.13.2-pink.svg?)](https://lv.binarybabel.org/catalog/gradle/latest)
-[![Gradle](https://img.shields.io/badge/gradle-8.2.0-gold.svg?)](https://lv.binarybabel.org/catalog/gradle/latest)
+[![Gradle](https://img.shields.io/badge/gradle-8.3.0-gold.svg?)](https://lv.binarybabel.org/catalog/gradle/latest)
+
 
 <p align="start">
 <img src="info/1.png" width="25%"/>
@@ -184,9 +187,13 @@ which making it easier to develop and test.
       coroutines,provides runBlocking coroutine builder used in tests.
     - [Gson](https://github.com/google/gson) - A modern JSON library for Kotlin and Java.
 
-    *
-  Functions([Scope](https://kotlinlang.org/docs/scope-functions.html) ,[Inline](https://kotlinlang.org/docs/inline-functions.html)
-  and [infix](https://www.geeksforgeeks.org/kotlin-infix-function-notation/) Functions)
+  
+ - Functions
+    - [Scope Functions](https://kotlinlang.org/docs/scope-functions.html)
+    - [Inline](https://kotlinlang.org/docs/inline-functions.html)
+    - [High Order](https://www.geeksforgeeks.org/kotlin-higher-order-functions/)
+    - [infix](https://www.geeksforgeeks.org/kotlin-infix-function-notation/)
+
 
 # Features
 
@@ -202,83 +209,77 @@ which making it easier to develop and test.
   preference. This includes options for light and dark themes or other theme customizations.
 
 ##### *Note*
+# Koin Module Enhancements for Improved Scalability
 
-In this example, I initially used two activities to display cats to the user and manage adding or
-deleting cats from the favorite list. However, it's possible to achieve the same functionality
-within
-a single activity by implementing a navigation scenario for a fullView Composable, jetpack
-Navigation, you can follow these steps:
+This section details optimizations implemented in the project's Koin dependency injection setup, particularly in the declaration of Koin use case modules. These refinements enhance the flexibility and modularity of use case injection throughout the application.
 
-1. Set Up Jetpack Navigation:
+Previous Koin Module Declaration:
 
-```kotlin 
- object Route {
-    const val CAT_FULL_View = "Cat_Image_AS_Sized/{CatUrl}/{imageId}"
+In earlier project iterations, the Koin use case module was likely defined using the single scope:
+
+```Kotlin
+single { GetCatsUseCase(get()) }
+```
+
+While the single scope creates a singleton object persistent across the container's lifetime, this approach might not always align with optimal dependency management practices.
+
+Addressing Lifetime Considerations:
+
+The ideal scope for a dependency depends on its usage pattern:
+```
+**Long-lived components:** Services, data repositories, components used by multiple screens and should never be dropped.
+**Medium-lived components:** User sessions, used by multiple screens but can be dropped after a specific period.
+**Short-lived components:** Views, used by a single screen and dropped at the screen's end.
+```
+
+*Introducing Scalable Scoping:*
+
+Recent project changes introduce factory and scoped definitions to cater to diverse dependency lifetimes:
+
+**factory definition:** Creates a new object each time it's requested, suitable for short-lived, non-persistent dependencies.
+```Kotlin
+factory<GetCatsUseCase> { GetCatsUseCaseImpl(get()) }
+```
+
+**scoped definition:** Creates an object with persistence tied to an associated scope's lifetime. This fosters granular control over dependencies and contributes to improved application maintainability.
+Scoped Dependency Injection in Action:
+
+```Kotlin
+scope(named("myScope")) {
+  // Define dependencies specific to this scope (e.g., CatUseCase)
+  scoped<CatUseCase> { CatUseCaseImpl(get()) }
+
+  // Define ViewModels for the scope (e.g., CatViewModel)
+  viewModel { CatViewModel(get()) }
+}
+
+scope { // Anonymous scope
+  // Define dependencies for this anonymous scope
+  scoped<CatUseCase> { CatUseCaseImpl(get()) }
+
+  // Define ViewModels for the anonymous scope
+  viewModel { CatViewModel(get()) }
 }
 ```
 
-replace CatAvtivity current composable method
+**Integrating with ViewModels:**
 
-```kotlin 
-@Composable
-fun CatsDestination() {
-    CatScreen(
-        state = viewModel.state.collectAsState().value,
-        effectFlow = viewModel.effects.receiveAsFlow()
-    ) { itemUrl, imageId ->
+To leverage Koin's dependency injection within your ViewModels, ensure they implement the KoinComponent interface:
 
-        // call navigate logic here 
-        // Navigate to the full view with the selected cat data
-        navController.navigate("catFullView/$itemUrl/$imageId")
-    }
+```Kotlin
+class MyViewModel @Inject constructor(
+  private val catUseCase: CatUseCase
+) : ViewModel() {
+  // ... ViewModel logic using catUseCase ...
 }
 ```
 
-then pass this route to navigation host case like
+**Benefits of Scalable Scoping:**
 
-```kotlin 
-composable(route = Route.CAT_FULL_View,
-    arguments = listOf(navArgument("itemUrl") { type = NavType.StringType },
-        navArgument("imageId") { type = NavType.StringType }
-    )
-) { backStackEntry ->
-    //call relevent compose method here to display full vie to user 
-    val catImageId = backStackEntry.arguments?.getString("imageId")
-    viewModel.checkFav(catImageId)
-    val catImageUrl = backStackEntry.arguments?.getString("itemUrl")
-    CatsFullView(catImageUrl)
-
-
-}
-
-```
-
-2. Migrate All Api calls from CatsDetailsViewModel to CatsViewModel .After that you will only have
-   one ViewModel present in Application.
-3. Now you have to make changes in your composable to display fullView
-
-```kotlin
- @Composable
-private fun CatsFullView(url: String) {
-    val isFavourite by viewModel.isFavourite.collectAsState()
-    initialState = remember { viewModel.isFavourite.value }
-    CatFullDetail(
-        url = url,
-        isFavourite = isFavourite,
-        favSelection = {
-            viewModel.updateFavouriteState(it)
-            if (it) {
-                viewModel.postFavCatData()
-            } else viewModel.deleteFavCatData()
-        }
-    )
-
-}
-```
-
-4. According to above calls make changes in CatFullScreen.kt file
-5. Replace topbar navigation icon to back icon when you saw user full view screen and handled this
-   according to back flow.
+***Enhanced Control:*** Manage dependency lifespans more precisely, aligning them with their usage patterns.
+***Improved Scalability:*** Facilitate the growth of the application with efficient dependency management.
+***Increased Maintainability:*** Promote cleaner code structure and easier dependency reasoning.
+This approach equips project with a robust foundation for dependency injection, enabling you to create well-structured, maintainable, and scalable applications.
 
 🙌 Now after that we have two ways to show same flow to user✌️.
 
@@ -298,14 +299,14 @@ are tested independently.
 
 ## Environment Setup
 
-- First, make sure you have Android ```(Android Studio Giraffe | 2022.3.1 Patch 2)```  version
+- First, make sure you have Android ```(Android Studio Iguana| 2023.2.1)```  version
   installed
 - Android Studio's Gradle JDK version should be Java 17.0.6.
 
 ### Commits Includes
 
 > [!IMPORTANT]   
-> [Commit c2510e7b6b3b29c432974c0ee85ce1b80e587a3b](https://github.com/Prashant-Chandel/MVVM-Clean_Architect-Example-with-koin/commit/c2510e7b6b3b29c432974c0ee85ce1b80e587a3b)
+> [Commit 1bbc4c18ea1f76d068938b367a5cc296d8a0dccc](https://github.com/P-C-Data/LBG-MVVM-Clean-Koin-SingleActivity/commit/1bbc4c18ea1f76d068938b367a5cc296d8a0dccc)
 
 This commit introduces the following major changes:
 
@@ -336,77 +337,8 @@ the codebase is structured with a focus on Single Responsibility, Open-Closed, L
 Interface Segregation, and Dependency Inversion principles. Additionally, Kotlin-specific components
 and functions are leveraged for efficient and expressive code.
 
-> [!IMPORTANT]   
-> [Commit f4952563f5cb885edbcd72d9b43f79f7cc883b1e](https://github.com/Prashant-Chandel/MVVM-Clean_Architect-Example-with-koin/commit/f4952563f5cb885edbcd72d9b43f79f7cc883b1e)
-
-This commit introduces the following major changes:
-
 **Enhanced Flow Handling:** Improvements in flow handling make the application more responsive and
 efficient in handling asynchronous data changes in the data layer.
-
-**changes Koin UseCase module**  Koin Use Case Module Update
-
-In the project's evolution, there have been changes to the declaration of the Koin use case module.
-These changes enhance the way use cases are injected into the application, providing more
-flexibility and modularity.
-
-Updated Koin Module Declaration
-
-Previously, the Koin use case module might have been declared as follows:
-
-```
-"single" definition, create an object that is persistent with the entire container lifetime (can't be dropped).
- single { GetCatsUseCase(get()) }
-```
-
-To ensure compliance with these conditions:
-
-```
- long live components (Services, Data Repository ...) - used by several screens, never dropped
- medium live components (user sessions ...) - used by several screens, must be dropped after an amount of time
- short live components (views) - used by only one screen & must be dropped at the end of the screen
-```
-
-Now, with the recent changes, the Koin module for use cases is declared in a more scallable manner:
-
- ```
-"factory definition", create a new object each time. Short live. No persistence in the container (can't be shared).
- factory<GetCatsUseCase> { GetCatsUseCaseImpl(get()) }
-``` 
-
-While these aspects play a crucial role in scaling an application, there's an opportunity to further
-enhance scalability by explicitly defining the scope of the module. This can be achieved through the
-use of scoped definitions, where an object is created with persistence tied to the associated
-scope's lifetime. This approach ensures a more granular and controlled management of dependencies,
-contributing to the overall scalability and maintainability of the application.
-
-```
-scope<A> { } is equivalent to scope(named<A>()){ } , but more convenient to write.You can also use a string qualifier like: scope(named("SCOPE_NAME")) { }
-1. using string name of scope
-scope(named("myScope")) {
-        // Define dependencies specific to this scope
-        scoped<CatUseCase> { CatUseCaseImpl(get()) }
-        
-        // Define ViewModel for the scope
-        viewModel { CatViewModel(get()) }
-    }
-2. Anonymous
-scope {
-        // Define dependencies specific to this anonymous scope
-        scoped<CatUseCase> { CatUseCaseImpl(get()) }
-        
-        // Define ViewModel for the anonymous scope
-        viewModel { CatViewModel(get()) }
-    }
-```
-
-To integrate it into the ViewModel, ensure that your ViewModel implements the KoinComponent. This
-allows the ViewModel to leverage Koin's dependency injection features seamlessly.
-
-**SOLID Principles and Kotlin Components:** The code adheres to the SOLID principles, ensuring that
-the code base is structured with a focus on Single Responsibility, Open-Closed, Liskov Substitution,
-Interface Segregation, and Dependency Inversion principles. Additionally, Kotlin-specific components
-and functions are leveraged for efficient and expressive code.
 
 **Thank you**😎
 
