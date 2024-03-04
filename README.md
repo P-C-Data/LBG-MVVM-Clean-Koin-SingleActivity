@@ -227,9 +227,9 @@ Addressing Lifetime Considerations:
 
 The ideal scope for a dependency depends on its usage pattern:
 ```
-**Long-lived components:** Services, data repositories, components used by multiple screens and should never be dropped.
-**Medium-lived components:** User sessions, used by multiple screens but can be dropped after a specific period.
-**Short-lived components:** Views, used by a single screen and dropped at the screen's end.
+*Long-lived components:* Services, data repositories, components used by multiple screens and should never be dropped.
+*Medium-lived components:* User sessions, used by multiple screens but can be dropped after a specific period.
+*Short-lived components:* Views, used by a single screen and dropped at the screen's end.
 ```
 
 *Introducing Scalable Scoping:*
