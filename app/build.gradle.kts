@@ -15,11 +15,11 @@ secretPropertiesFile.inputStream().use { input ->
 }
 
 android {
-    namespace = "com.clean.mvvmLbg"
+    namespace = "com.lbg.mvvmClean"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.clean.mvvmLbg"
+        applicationId = "com.lbg.mvvmClean"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
